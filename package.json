@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -b --pretty --verbose",
-    "start": "node ./dist/index.js"
+    "start": "node ./dist/index.js",
+    "watch": "concurrently npm:watch-*",
+    "watch-ts": "tsc -w",
+    "watch-node": "nodemon ./dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,8 @@
     "graphql": "^16.5.0"
   },
   "devDependencies": {
+    "concurrently": "^7.3.0",
+    "nodemon": "^2.0.19",
     "typescript": "^4.7.4"
   }
 }
