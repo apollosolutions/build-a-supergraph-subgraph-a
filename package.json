@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -b --pretty --verbose",
     "start": "node ./dist/index.js",
+    "start-otel": "node --require \"./dist/tracing.js\" ./dist/index.js",
     "watch": "concurrently npm:watch-*",
     "watch-ts": "tsc -w",
     "watch-node": "nodemon ./dist/index.js"
@@ -23,6 +24,9 @@
   "homepage": "https://github.com/apollosolutions/build-a-supergraph-subgraph-a#readme",
   "dependencies": {
     "@apollo/subgraph": "^2.0.5",
+    "@opentelemetry/api": "^1.1.0",
+    "@opentelemetry/auto-instrumentations-node": "^0.31.0",
+    "@opentelemetry/sdk-node": "^0.31.0",
     "apollo-server": "^3.10.0",
     "graphql": "^16.5.0"
   },
