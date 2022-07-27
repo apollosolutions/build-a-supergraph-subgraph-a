@@ -1,0 +1,29 @@
+{
+  "name": "build-a-supergraph-subgraph-a",
+  "version": "1.0.0",
+  "description": "",
+  "main": "/dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -b --pretty --verbose",
+    "start": "node ./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apollosolutions/build-a-supergraph-subgraph-a.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apollosolutions/build-a-supergraph-subgraph-a/issues"
+  },
+  "homepage": "https://github.com/apollosolutions/build-a-supergraph-subgraph-a#readme",
+  "dependencies": {
+    "@apollo/subgraph": "^2.0.5",
+    "apollo-server": "^3.10.0",
+    "graphql": "^16.5.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
+}
