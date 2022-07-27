@@ -14,4 +14,4 @@ RUN npm run build
 
 EXPOSE 4000
 
-CMD [ "node", "./dist/index.js" ]
+CMD [ "node", "--require","./dist/tracing.js","./dist/index.js" ]
