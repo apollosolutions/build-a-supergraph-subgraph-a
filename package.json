@@ -1,8 +1,18 @@
 {
   "name": "build-a-supergraph-subgraph-a",
   "version": "1.0.0",
-  "description": "",
+  "description": "Subgraph-A for the build-a-supergraph workshop: https://github.com/apollosolutions/build-a-supergraph",
   "main": "/dist/index.js",
+  "homepage": "https://github.com/apollosolutions/build-a-supergraph-subgraph-a#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apollosolutions/build-a-supergraph-subgraph-a.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/apollosolutions/build-a-supergraph-subgraph-a/issues"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -b --pretty --verbose",
@@ -12,16 +22,6 @@
     "watch-ts": "tsc -w",
     "watch-node": "nodemon ./dist/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/apollosolutions/build-a-supergraph-subgraph-a.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/apollosolutions/build-a-supergraph-subgraph-a/issues"
-  },
-  "homepage": "https://github.com/apollosolutions/build-a-supergraph-subgraph-a#readme",
   "dependencies": {
     "@apollo/subgraph": "^2.0.5",
     "@opentelemetry/api": "1.0",
