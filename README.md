@@ -19,3 +19,7 @@ Please follow the fowling steps to build and run this though docker:
 
 1. `docker build . -t subgraph-a` - build command
 2. `docker run -p 4000:4000 --name subgraph-a -t subgraph-a` - run command
+
+## Open Telemetry Tracing
+
+This repo is set up with Open Telemetry traces. Please add or change the variable of `OTEL_HTTP_ENDPOINT` in the `.env` file.

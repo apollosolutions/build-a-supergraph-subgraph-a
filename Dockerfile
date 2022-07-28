@@ -10,6 +10,8 @@ RUN npm install --no-save
 COPY src ./src
 COPY tsconfig.json .
 
+copy .env .
+
 RUN npm run build
 
 EXPOSE 4000
