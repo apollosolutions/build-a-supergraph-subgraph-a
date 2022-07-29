@@ -24,4 +24,11 @@ Please follow the fowling steps to build and run this though docker:
 
 This repo is set up with Open Telemetry traces. Please add or change the variable of `OTEL_HTTP_ENDPOINT` in the `.env` file.
 
-https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+## Helm chart notes
+
+- Make sure your docker image is public. If its not public the deploy will fail because it wont be able to pull the image.
+- Please update the repo name in `deploy/subgraph-a/values.yaml` on line 4.
+
+### Setting up github container registry
+
+[github guide](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
