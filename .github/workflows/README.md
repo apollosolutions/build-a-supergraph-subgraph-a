@@ -3,7 +3,8 @@
 Included in this repo are actions to:
 
 * Run npm test on PR
-* Build and publish Docker image
+* Run Helm build and lint on PR
+* Build and publish Docker image on merge
 
 ## Running Locally
 
@@ -17,5 +18,5 @@ You can use [pin-github-action](https://github.com/mheap/pin-github-action) if y
 We allow the GitHub first party actions to be referenced by tag with the flag `--allow "actions/*"`.
 
 ```shell
-npx pin-github-action --allow "actions/*" .github/workflows/pr-check.yml
+npx pin-github-action --allow "actions/*" .github/workflows/pr-check-code.yml
 ```

@@ -1,13 +1,10 @@
-name: PR Check
+name: pr-check-code
 
-on:
-  pull_request:
-    branches: [ 'main' ]
+on: pull_request
 
 jobs:
-  build:
+  npm-build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
 
