@@ -1,7 +1,7 @@
 replicaCount: 3
 
 image:
-  repository: ghcr.io/kschrade/subgraph-a
+  repository: ghcr.io/apollosolutions/build-a-supergraph-subgraph-a
   pullPolicy: Always
   tag: ''
 
