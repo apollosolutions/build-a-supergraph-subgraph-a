@@ -18,13 +18,13 @@ on:
 
 env:
   IMAGE: ${{ github.repository }}
+  USER_NAME: ${{ github.actor }}
   GITHUB_SHA: ${{ inputs.version }}
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: cluster-1 # Add your cluster name here.
   GKE_ZONE: us-central1-c # Add your cluster zone here.
   DEPLOYMENT_NAME: gke-test # Add your deployment name here.
-  IMAGE: randocats
-  REGISTRY_HOSTNAME: us.gcr.io
+  REGISTRY: ghcr.io
   DEPLOYMENT_NAME: randocats
 
 jobs:
@@ -63,10 +63,13 @@ jobs:
       # Deploy the Docker image to the GKE cluster
       - name: Deploy
         run: |
-          helm upgrade $PROJECT_ID $PROJECT_ID-cluster/ \
-            --atomic --dry-run \
-            ./deploy/subgraph-a \
-            --values ./deploy/subgraph-a/values.yaml
+          helm upgrade $PROJECT_ID \
+          --set image.repository=$REGISTRY/$USER_NAME/$IMAGE \
+          --set image.tag=$GITHUB_SHA \
+          --atomic \
+          --install \
+          ./deploy/subgraph-a \
+          --values ./deploy/subgraph-a/values.yaml
 
             
         # kubectl rollout status deployment/$DEPLOYMENT_NAME
