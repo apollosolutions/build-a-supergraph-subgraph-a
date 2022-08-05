@@ -67,6 +67,7 @@ jobs:
           --set image.repository=$REGISTRY/$USER_NAME/$IMAGE \
           --set image.tag=$GITHUB_SHA \
           --atomic \
+          --dry-run \
           --install \
           ./deploy/subgraph-a \
           --values ./deploy/subgraph-a/values.yaml
