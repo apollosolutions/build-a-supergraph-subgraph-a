@@ -67,7 +67,3 @@ jobs:
           --install \
           ./deploy/subgraph-a \
           --values ./deploy/subgraph-a/values.yaml
-
-            
-          kubectl rollout status deployment/$PROJECT_ID-chart
-          kubectl get services -o wide
