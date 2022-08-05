@@ -15,6 +15,11 @@ on:
         description: 'SHA of the image to deploy'
         type: string
         required: true
+      dry-run:
+        type: boolean
+        description: 'Run a dry run with helm'
+        required: false
+        default: false
 
 env:
   IMAGE: ${{ github.repository }}
@@ -57,8 +62,22 @@ jobs:
         run: |
           curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
-      # Deploy the Docker image to the GKE cluster
+      # Deploy the Docker image to the GKE cluster with dry run
       - name: Deploy
+        if: ${{ inputs.dry-run }}
+        run: |
+          helm upgrade $PROJECT_ID \
+          --set image.repository=$REGISTRY/$IMAGE \
+          --set image.tag=$GITHUB_SHA \
+          --atomic \
+          --dry-run \
+          --install \
+          ./deploy/subgraph-a \
+          --values ./deploy/subgraph-a/values.yaml
+          
+      # Deploy the Docker image to the GKE cluster for real
+      - name: Deploy
+        if: ${{ !inputs.dry-run }}
         run: |
           helm upgrade $PROJECT_ID \
           --set image.repository=$REGISTRY/$IMAGE \
