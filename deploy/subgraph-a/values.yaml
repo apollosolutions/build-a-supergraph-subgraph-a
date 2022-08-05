@@ -14,9 +14,9 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
-
 securityContext: {}
+
+podSecurityContext: {}
 
 service:
   type: ClusterIP
