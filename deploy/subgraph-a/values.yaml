@@ -3,14 +3,13 @@ replicaCount: 3
 image:
   repository: ghcr.io/apollosolutions/build-a-supergraph-subgraph-a
   pullPolicy: Always
-  tag: ''
+  tag: 'main'
 
 nameOverride: 'subgraph-a-app'
 fullnameOverride: 'subgraph-a-chart'
 
 serviceAccount:
-  create: true
-  name: 'subgraph-a-sa'
+  create: false
 
 podAnnotations: {}
 
