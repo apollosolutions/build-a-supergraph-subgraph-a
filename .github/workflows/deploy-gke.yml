@@ -25,8 +25,8 @@ env:
   IMAGE: ${{ github.repository }}
   GITHUB_SHA: ${{ inputs.version }}
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
-  GKE_CLUSTER: cluster-1 # Add your cluster name here.
-  GKE_ZONE: us-central1-c # Add your cluster zone here.
+  GKE_CLUSTER: apollo-supergraph-k8s-prod # Add your cluster name here.
+  GKE_ZONE: us-east1 # Add your cluster zone here.
   REGISTRY: ghcr.io
 
 jobs:
