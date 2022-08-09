@@ -73,9 +73,10 @@ jobs:
           helm upgrade $PROJECT_ID \
           --set image.repository=$REGISTRY/$IMAGE \
           --set image.tag=$GITHUB_SHA \
-          --atomic \
           --dry-run \
+          --atomic \
           --install \
+          --timeout 10m0s \
           ./deploy/subgraph-a \
           --values ./deploy/subgraph-a/values.yaml
           
@@ -88,5 +89,6 @@ jobs:
           --set image.tag=$GITHUB_SHA \
           --atomic \
           --install \
+          --timeout 10m0s \
           ./deploy/subgraph-a \
           --values ./deploy/subgraph-a/values.yaml
