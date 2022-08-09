@@ -5,7 +5,6 @@ name: deploy-gke
 
 # REQUIRED REPO SECRETS
 #   - GKE_PROJECT
-#   - GKE_SA_KEY
 
 # Run on manual trigger for now
 on:
@@ -18,6 +17,11 @@ on:
       dry-run:
         type: boolean
         description: 'Run a dry run with helm'
+        required: false
+        default: false
+      debug:
+        type: boolean
+        description: 'Run helm in debug mode'
         required: false
         default: false
 
@@ -79,6 +83,20 @@ jobs:
           ./deploy/subgraph-a \
           --values ./deploy/subgraph-a/values.yaml
           
+      # Deploy the Docker image to the GKE cluster for real with debug
+      - name: Deploy
+        if: ${{ !inputs.dry-run && inputs.debug }}
+        run: |
+          helm upgrade $PROJECT_ID \
+          --set image.repository=$REGISTRY/$IMAGE \
+          --set image.tag=${{ inputs.version }} \
+          --atomic \
+          --install \
+          --timeout 10m0s \
+          --debug \
+          ./deploy/subgraph-a \
+          --values ./deploy/subgraph-a/values.yaml
+
       # Deploy the Docker image to the GKE cluster for real
       - name: Deploy
         if: ${{ !inputs.dry-run }}
