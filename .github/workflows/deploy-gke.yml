@@ -4,7 +4,7 @@ name: deploy-gke
 # https://docs.github.com/en/actions/deployment/deploying-to-your-cloud-provider/deploying-to-google-kubernetes-engine
 
 # REQUIRED REPO SECRETS
-#   - GKE_PROJECT
+#   - GCP_CREDENTIALS
 
 # Run on manual trigger for now
 on:
@@ -27,7 +27,7 @@ on:
 
 env:
   IMAGE: ${{ github.repository }}
-  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  PROJECT_ID: subgraph-a # Add your app name here
   GKE_CLUSTER: apollo-supergraph-k8s-prod # Add your cluster name here.
   GKE_ZONE: us-east1 # Add your cluster zone here.
   REGISTRY: ghcr.io
