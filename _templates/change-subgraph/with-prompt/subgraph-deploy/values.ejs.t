@@ -8,8 +8,8 @@ image:
   pullPolicy: Always
   tag: '<%= default_tag %>'
 
-nameOverride: 'subgraph-a-app'
-fullnameOverride: 'subgraph-a-chart'
+nameOverride: '<%= subgraph_name %>-app'
+fullnameOverride: '<%= subgraph_name %>-chart'
 
 serviceAccount:
   create: false
