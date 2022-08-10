@@ -17,11 +17,6 @@ module.exports = [
     type: 'input',
     name: 'default_tag',
     message: "What's the default tag for your image?",
-    result: (input) => {
-      if (!input) {
-        return 'main';
-      }
-      return input;
-    },
+    initial: 'main',
   },
 ];
