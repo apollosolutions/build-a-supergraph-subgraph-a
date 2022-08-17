@@ -11,24 +11,32 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'SHA of the image to deploy'
+        description: "SHA of the image to deploy"
         type: string
         required: true
+        default: main
+      cluster:
+        description: "Target K8s cluster"
+        type: choice
+        required: true
+        default: apollo-supergraph-k8s-dev
+        options:
+          - apollo-supergraph-k8s-dev
+          - apollo-supergraph-k8s-prod
       dry-run:
         type: boolean
-        description: 'Run a dry run with helm'
+        description: "Run a dry run with helm"
         required: false
         default: false
       debug:
         type: boolean
-        description: 'Run helm in debug mode'
+        description: "Run helm in debug mode"
         required: false
         default: false
 
 env:
   IMAGE: ${{ github.repository }}
   PROJECT_ID: subgraph-a # Add your app name here
-  GKE_CLUSTER: apollo-supergraph-k8s-prod # Add your cluster name here.
   GKE_ZONE: us-east1 # Add your cluster zone here.
   REGISTRY: ghcr.io
 
@@ -42,15 +50,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - id: 'auth'
-        uses: 'google-github-actions/auth@v0'
+      - id: "auth"
+        uses: "google-github-actions/auth@v0"
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
 
-      - name: 'Set up Cloud SDK'
+      - name: "Set up Cloud SDK"
         uses: google-github-actions/setup-gcloud@v0
 
-      - name: 'Use gcloud CLI'
+      - name: "Use gcloud CLI"
         run: gcloud info
 
       # Configure Docker to use the gcloud command-line tool as a credential
@@ -61,7 +69,7 @@ jobs:
       # Get the GKE credentials so we can deploy to the cluster
       - uses: google-github-actions/get-gke-credentials@fb08709ba27618c31c09e014e1d8364b02e5042e
         with:
-          cluster_name: ${{ env.GKE_CLUSTER }}
+          cluster_name: ${{ inputs.cluster }}
           location: ${{ env.GKE_ZONE }}
 
       # Install helm
@@ -82,7 +90,7 @@ jobs:
           --timeout 10m0s \
           ./deploy/subgraph-a \
           --values ./deploy/subgraph-a/values.yaml
-          
+
       # Deploy the Docker image to the GKE cluster for real with debug
       - name: Deploy
         if: ${{ !inputs.dry-run && inputs.debug }}
