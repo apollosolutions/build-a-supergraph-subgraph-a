@@ -49,7 +49,12 @@ export const resolvers = {
       return fixtures.locations;
     },
     location: (_: any, args: { id: string }) => {
-      return fixtures.locations.find((l) => l.id == args.id);
+      return fixtures.locations.find((l) => l.id === args.id);
+    },
+  },
+  Location: {
+    __resolveReference(ref: { __typename: "Location"; id: string }) {
+      return { ...ref, ...fixtures.locations.find((l) => l.id === ref.id) };
     },
   },
 };
