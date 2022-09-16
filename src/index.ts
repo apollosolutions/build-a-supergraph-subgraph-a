@@ -11,6 +11,6 @@ const server = new ApolloServer({
   plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
 });
 
-server.listen(4000).then(({ url }) => {
+server.listen(process.env.PORT ?? 4000).then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });

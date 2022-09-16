@@ -3,10 +3,10 @@ replicaCount: 3
 image:
   repository: ghcr.io/apollosolutions/build-a-supergraph-subgraph-a
   pullPolicy: Always
-  tag: 'main'
+  tag: main
 
-nameOverride: 'subgraph-a-app'
-fullnameOverride: 'subgraph-a-chart'
+nameOverride: graphql
+fullnameOverride: graphql
 
 serviceAccount:
   create: false
@@ -23,7 +23,7 @@ service:
 
 ingress:
   enabled: false
-  className: ''
+  className: ""
   annotations:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
