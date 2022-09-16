@@ -103,7 +103,7 @@ jobs:
           --install \
           --debug \
           ./deploy/${{ inputs.app_name }} \
-          --values ./deploy/${{ inputs.app_name }}/values.yaml
+          --values ./deploy/${{ inputs.app_name }}/values.yaml \
           -f ./deploy/${{ inputs.app_name }}/environments/${{ inputs.cluster_suffix }}.yaml
 
       # Deploy the Docker image to the GKE cluster for real
@@ -118,5 +118,5 @@ jobs:
           --atomic \
           --install \
           ./deploy/${{ inputs.app_name }} \
-          --values ./deploy/${{ inputs.app_name }}/values.yaml
+          --values ./deploy/${{ inputs.app_name }}/values.yaml \
           -f ./deploy/${{ inputs.app_name }}/environments/${{ inputs.cluster_suffix }}.yaml
