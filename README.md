@@ -4,10 +4,9 @@ This is a work-in-progress repo and small part of the Apollo Solutions [build-a-
 
 Please watch the main repo for any updates and official releases.
 
--------------
+---
 
 **The code in this repository is experimental and has been provided for reference purposes only. Community feedback is welcome but this project may not be supported in the same way that repositories in the official [Apollo GraphQL GitHub organization](https://github.com/apollographql) are. If you need help you can file an issue on this repository, [contact Apollo](https://www.apollographql.com/contact-sales) to talk to an expert, or create a ticket directly in Apollo Studio.**
-
 
 ## Set up steps
 
@@ -41,3 +40,7 @@ This repo is set up with Open Telemetry traces. Please add or change the variabl
 ### Setting up github container registry
 
 [github guide](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
+
+# What's different - Hygen!
+
+[Hygen](https://www.hygen.io/) is used to replace lines in fields to create new charts and such. Basically allows you to create subgraph-x.
