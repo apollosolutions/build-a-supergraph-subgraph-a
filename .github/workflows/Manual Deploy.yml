@@ -64,14 +64,3 @@ jobs:
       cluster_suffix: ${{ inputs.environment }}
       dry-run: ${{ inputs.dry-run }}
       debug: ${{ inputs.debug }}
-
-  publish:
-    needs: [deploy_aws, deploy_gcp]
-    if: always() &&
-      (needs.deploy_aws.result == 'success' || needs.deploy_aws.result == 'skipped') &&
-      (needs.deploy_gcp.result == 'success' || needs.deploy_gcp.result == 'skipped')
-    uses: ./.github/workflows/_rover-subgraph-publish.yml
-    secrets: inherit
-    with:
-      subgraph_name: subgraph-a
-      variant: ${{ inputs.environment }}
