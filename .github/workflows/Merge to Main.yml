@@ -68,3 +68,4 @@ jobs:
       app_name: subgraph-a
       cluster_suffix: dev
       region: us-east-1
+

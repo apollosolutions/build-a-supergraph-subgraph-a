@@ -101,6 +101,7 @@ jobs:
           --set image.tag=${{ inputs.version }} \
           --atomic \
           --install \
+          --debug \
           ./deploy/${{ inputs.app_name }} \
           --values ./deploy/${{ inputs.app_name }}/values.yaml \
           -f ./deploy/${{ inputs.app_name }}/environments/${{ inputs.cluster_suffix }}.yaml
