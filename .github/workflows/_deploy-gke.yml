@@ -81,6 +81,7 @@ jobs:
           --namespace ${{ inputs.app_name }} \
           --set image.repository=$repository \
           --set image.tag=${{ inputs.version }} \
+          --dry-run \
           --atomic \
           --install \
           ./deploy/${{ inputs.app_name }} \
