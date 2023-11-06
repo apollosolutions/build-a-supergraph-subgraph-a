@@ -1,3 +1,8 @@
+import { readFile } from 'fs/promises';
+import * as jose from 'jose'
+import crypto from "crypto";
+import path from "path";
+
 const fixtures = {
   locations: [
     {
@@ -57,4 +62,20 @@ export const resolvers = {
       return { ...ref, ...fixtures.locations.find((l) => l.id === ref.id) };
     },
   },
+  Mutation: {
+    login: async (_: any, args: { username: string }) => {
+      const privateKeyText = await readFile(path.join(__dirname,"./private_key.pem"), {
+        encoding: "utf8"
+      });
+      const alg = "ES256";
+      const privateKey = crypto.createPrivateKey(privateKeyText);
+
+      const jwt = await new jose.SignJWT({
+        id: args.username,
+        scope: "read:location read:review write:review"
+      }).setProtectedHeader({ alg }).setIssuedAt().setExpirationTime('2h').sign(privateKey);
+
+      return { token: jwt }
+    }
+  }
 };
