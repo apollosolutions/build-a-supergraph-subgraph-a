@@ -16,6 +16,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -b --pretty --verbose",
+    "postbuild": "cp ./src/private_key.pem ./dist/private_key.pem",
     "start": "node ./dist/index.js",
     "start-otel": "node --require \"./dist/tracing.js\" ./dist/index.js",
     "watch": "concurrently npm:watch-*",
