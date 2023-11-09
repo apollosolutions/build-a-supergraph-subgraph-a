@@ -16,14 +16,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -b --pretty --verbose",
+    "postbuild": "cp ./src/private_key.pem ./dist/private_key.pem",
     "start": "node ./dist/index.js",
     "start-otel": "node --require \"./dist/tracing.js\" ./dist/index.js",
     "watch": "concurrently npm:watch-*",
     "watch-ts": "tsc -w",
-    "watch-node": "nodemon ./dist/index.js"
+    "watch-node": "nodemon ./dist/index.js",
+    "watch-copykey": "cp ./src/private_key.pem ./dist/private_key.pem"
   },
   "dependencies": {
-    "@apollo/subgraph": "^2.0.5",
+    "@apollo/subgraph": "^2.5.6",
     "@opentelemetry/api": "1.0",
     "@opentelemetry/core": "1.0",
     "@opentelemetry/exporter-trace-otlp-http": "^0.31.0",
@@ -35,9 +37,10 @@
     "@opentelemetry/sdk-node": "^0.31.0",
     "@opentelemetry/sdk-trace-base": "1.0",
     "@opentelemetry/sdk-trace-node": "1.0",
-    "apollo-server": "^3.10.0",
+    "apollo-server": "^3.12.1",
     "env-var": "^7.1.1",
-    "graphql": "^16.5.0"
+    "graphql": "^16.5.0",
+    "jose": "^5.1.0"
   },
   "devDependencies": {
     "concurrently": "^7.3.0",
